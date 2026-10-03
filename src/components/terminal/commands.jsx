@@ -6,6 +6,7 @@ export const commands = {
           <ul>
             <li>about: displays more information about me</li>
             <li>projects: displays projects I've built</li>
+            <li>skills: displays my current skillset</li>
             <li>exp: displays my previous experience</li>
             <li>edu: displays my education history</li>
             <li>src: displays a link to the source code</li>
@@ -16,11 +17,21 @@ export const commands = {
         </>,
     about: () => 
         <>
-          <p>Hey, I'm Amber! I'm a fullstack software engineer with over a year of experience working at Redfin.
-            My journey has been shaped by two intensive engineering bootcamps where I've built strong fundamentals.
-            I'm eager to join a collaborative team where I can continue learning while making meaningful contributions.
+          <p>Hey, I'm Amber! I'm a full stack software engineer with over a year of experience working in a CI/CD environment.
+            I have experience with JavaScript, React, Java, Spring Boot, and MySQL. My foundation comes from two intensive
+            engineering programs, Hack Reactor and LaunchCode. I'm looking to join a collaborative team where I can
+            keep growing while contributing to work that makes a real impact.
           </p>
         </>,
+
+    skills: () => (
+        <ul className="entries">
+            <li><span className="contact-label">frontend</span> JavaScript, React, HTML, CSS</li>
+            <li><span className="contact-label">backend</span> Java, Spring Boot</li>
+            <li><span className="contact-label">database</span> MySQL, PostgreSQL, MongoDB</li>
+            <li><span className="contact-label">tools</span> Git, Netlify, AWS, Netflix Conductor</li>
+        </ul>
+    ),
     projects: () => 
         <>
             <ul className="entries projects">
@@ -62,11 +73,20 @@ export const commands = {
         </div>
     ),
     contact: () => (
-        <div>
-            Email Me: <a href="mailto:ambermorris1997@gmail.com">ambermorris1997@gmail.com</a>
-            GitHub: <a href="https://github.com/ambermorris97" target="_blank">ambermorris97</a>
-            LinkedIn: <a href="https://linkedin.com/in/ambermorris97" target="_blank">ambermorris97</a>
-        </div>
+        <ul>
+            <li>
+                <span className="contact-label">email: </span>
+                <a href="mailto:ambermorris1997@gmail.com">ambermorris1997@gmail.com</a>
+            </li>
+            <li>
+                <span className="contact-label">github: </span>
+                <a href="https://github.com/ambermorris97" target="_blank">github.com/ambermorris97</a>
+            </li>
+            <li>
+                <span className="contact-label">linkedin: </span>
+                <a href="https://linkedin.com/in/ambermorris97" target="_blank">linkedin.com/in/ambermorris97</a>
+            </li>
+        </ul>
     ),
     resume: () => (
         <>

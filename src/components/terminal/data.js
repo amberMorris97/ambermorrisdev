@@ -7,7 +7,7 @@ export const projects = [
     },
     {
         name: "Portfolio (Terminal ver.)",
-        description: "A pure frontend app using React to showcase my skills and experience (YOU ARE HERE)",
+        description: "A pure frontend app using React and Claude to showcase my skills and experience",
         stack: ["React", "JavaScript", "TailwindCSS"],
         link: "github.com/ambermorris97"
     },

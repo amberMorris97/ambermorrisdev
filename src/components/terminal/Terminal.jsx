@@ -10,7 +10,7 @@ const Terminal = () => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView();
+    bottomRef.current?.scrollIntoView({ block: "end" });
   }, [display]);
 
   const handleKeyDown = (e) => {
@@ -30,56 +30,96 @@ const Terminal = () => {
             setInputValue('');
         }
     }
-  }
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const cmd = inputValue.trim().toLowerCase();
-
-    if (!cmd) return;
+  const runCommand = (raw) => {
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd) return; 
 
     if (cmd === "clear") {
         setDisplay([]);
     } else {
         const cmdFn = commands[cmd];
-    
         const output = cmdFn ? cmdFn() : `command not found: ${cmd}`;
-    
-        setDisplay([...display, { cmd, output }]);
+
+        setDisplay((prev) => [ ...prev, { cmd, output }]);
     }
 
-    setCmdHistory([...cmdHistory, inputValue]);
-    setHistoryIndex(cmdHistory.length + 1);
+    setCmdHistory((prev) => [...prev, raw]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    runCommand(inputValue);
     setInputValue('');
   };
 
   const renderDisplay = display.map((result, idx) => {
     return (
-        <div key={`${idx}-${result.cmd}`} className='output-display'>
-            <span>{result.cmd}</span>
-            <div>{result.output}</div>
+        <div key={`${idx}-${result.cmd}`} className="output-display">
+        <div className="command-line">
+            <span className="prompt">guest@ambermorrisdev:~$</span>
+            <span className="command">{result.cmd}</span>
+        </div>
+        <div className="command-output">{result.output}</div>
         </div>
     );
   });
 
+  const renderCommands = ["help", "about", "projects", "exp", "edu", "src", "contact", "skills", "resume", "clear"].map((name) => {
+    return (
+        <button
+            key={name}
+            type="button"
+            onClick={(e) => {
+                e.stopPropagation();
+                runCommand(name);
+            }}
+        >
+            {name}
+        </button>
+    );
+  });
+
+
   return (
-    <section onClick={() => inputRef.current.focus()}>
-        <div className="terminal-input-container">
+    <main className="desktop">
+        <section className="terminal-window" onClick={() => inputRef.current.focus()}>
+        <div className="title-bar">
+            <span className="dot dot-red" />
+            <span className="dot dot-yellow" />
+            <span className="dot dot-green" />
+            <span className="title">guest@ambermorrisdev: ~</span>
+        </div>
+
+        <div className="terminal-body">
+            <div className="intro">
+            <h1 className="intro-title">Amber Morris</h1>
+            <p>Full stack engineer. JavaScript, React, Java, Spring Boot, MySQL.</p>
+            <p className="dim">
+                Type <span className="prompt">help</span> to see what you can do.
+            </p>
+            </div>
+
             {renderDisplay}
-            <form onSubmit={handleSubmit}>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    autoFocus
-                />
+
+            <form onSubmit={handleSubmit} className="input-line">
+            <span className="prompt">guest@ambermorrisdev:~$</span>
+            <input
+                ref={inputRef}
+                autoFocus
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+            />
             </form>
             <div ref={bottomRef} />
         </div>
-    </section>
+        <div className="chips">
+            {renderCommands}
+        </div>
+        </section>
+    </main>
   );
 };
 

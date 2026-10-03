@@ -7,7 +7,6 @@ function App() {
   return (
     <>
       <section>
-        <h1>Amber Morris Portfolio</h1>
         <Terminal />
       </section>
     </>
