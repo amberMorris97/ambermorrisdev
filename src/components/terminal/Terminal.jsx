@@ -5,12 +5,32 @@ const Terminal = () => {
   const [cmdHistory, setCmdHistory] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [display, setDisplay] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(0);
   const inputRef = useRef(null);
   const bottomRef = useRef(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView();
   }, [display]);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (historyIndex > 0) {
+            setHistoryIndex(historyIndex - 1);
+            setInputValue(cmdHistory[historyIndex - 1]);
+        }
+    } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (historyIndex < cmdHistory.length - 1) {
+            setHistoryIndex(historyIndex + 1);
+            setInputValue(cmdHistory[historyIndex + 1]);
+        } else {
+            setHistoryIndex(cmdHistory.length);
+            setInputValue('');
+        }
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +50,7 @@ const Terminal = () => {
     }
 
     setCmdHistory([...cmdHistory, inputValue]);
+    setHistoryIndex(cmdHistory.length + 1);
     setInputValue('');
   };
 
@@ -52,6 +73,7 @@ const Terminal = () => {
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     autoFocus
                 />
             </form>
