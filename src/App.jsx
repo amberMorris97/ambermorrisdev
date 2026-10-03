@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Terminal from './components/terminal/Terminal';
 import './App.css'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <section>
         <h1>Amber Morris Portfolio</h1>
+        <Terminal />
       </section>
     </>
   );
