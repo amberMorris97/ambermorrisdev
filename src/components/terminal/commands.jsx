@@ -90,7 +90,7 @@ export const commands = {
     ),
     resume: () => (
         <>
-            <a href="/resume.pdf" download="Amber-Morris-Resume.pdf">
+            <a href="/AmberMorrisResume.pdf" download="Amber-Morris-Resume.pdf">
                 download resume (PDF)
             </a>
         </>
