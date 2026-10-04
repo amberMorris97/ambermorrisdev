@@ -9,7 +9,7 @@ An interactive portfolio that works like a command line. Visitors type commands 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![Status](https://img.shields.io/badge/status-in%20progress-39ff6a?style=for-the-badge)
 
-[**Live demo**](#) &nbsp;|&nbsp; [GitHub](https://github.com/ambermorris97) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/ambermorris97)
+[**Live demo**](https://ambermorrisdev.netlify.app) &nbsp;|&nbsp; [GitHub](https://github.com/ambermorris97) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/ambermorris97)
 
 ## About
 
@@ -32,7 +32,8 @@ I'm Amber, a full stack software engineer with over a year of professional exper
 | `about` | Short bio |
 | `projects` | Things I've built |
 | `skills` | Technologies I work with |
-| `experience` | Work history and training |
+| `experience` | Work history |
+| `education` | Education history |
 | `resume` | View or download my resume |
 | `contact` | Email, GitHub, and LinkedIn |
 | `clear` | Clears the screen |
@@ -47,8 +48,8 @@ I'm Amber, a full stack software engineer with over a year of professional exper
 
 ```bash
 # clone the repo
-git clone https://github.com/ambermorris97/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/ambermorris97/ambermorrisdev.git
+cd ambermorrisdev
 
 # install dependencies
 npm install
